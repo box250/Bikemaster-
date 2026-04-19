@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Связь с мастером</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* Твой фон */
+    background: url('my-background.jpg') no-repeat center center;
+    background-size: cover;
+  }
+
+  /* Верхняя большая кнопка */
+  .contact-button {
+    padding: 20px 50px;
+    font-size: 24px;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #6a0dad, #9b30ff);
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+    margin-bottom: 30px;
+  }
+  .contact-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+  }
+
+  /* Табличка с номером для верхней кнопки */
+  .popup {
+    display: none;
+    background: rgba(75,0,130,0.85);
+    color: #fff;
+    padding: 20px 30px;
+    border-radius: 12px;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  @keyframes fadeIn {
+    from { opacity:0; transform: scale(0.9);}
+    to { opacity:1; transform: scale(1);}
+  }
+
+  /* Рамка с кнопкой */
+  .info-box {
+    border: 3px solid #9b30ff;
+    border-radius: 15px;
+    padding: 20px 25px;
+    background: rgba(138,43,226,0.15);
+    text-align: center;
+    color: #fff;
+    max-width: 320px;
+    font-size: 18px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  }
+  .info-box span {
+    display: block;
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-size: 18px;
+  }
+  .info-box button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #6a0dad, #9b30ff);
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .info-box button:hover {
+    transform: scale(1.05);
+  }
+</style>
+</head>
+<body>
+
+<!-- Верхняя большая кнопка -->
+<button class="contact-button" onclick="showPopup()">Связь с мастером</button>
+
+<!-- Табличка с номером для верхней кнопки -->
+<div class="popup" id="topPopup">Номер для связи: +79286675351</div>
+
+<!-- Рамка с текстом и кнопкой -->
+<div class="info-box" id="infoBox">
+  <span>Цены уточнять у мастера</span>
+  <button id="showNumberBtn" onclick="showNumber()">Номер</button>
+</div>
+
+<script>
+  // Табличка для верхней кнопки
+  function showPopup() {
+    const popup = document.getElementById('topPopup');
+    popup.style.display = 'block';
+    setTimeout(() => { popup.style.display = 'none'; }, 5000);
+  }
+
+  // Кнопка внутри рамки заменяется на номер
+  function showNumber() {
+    const infoBox = document.getElementById('infoBox');
+    const btn = document.getElementById('showNumberBtn');
+    btn.style.display = 'none';
+    const numberText = document.createElement('span');
+    numberText.textContent = '+79286675351';
+    numberText.style.fontWeight = 'bold';
+    numberText.style.fontSize = '20px';
+    infoBox.appendChild(numberText);
+  }
+</script>
+
+</body>
+</html>
